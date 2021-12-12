@@ -41,6 +41,7 @@ const { styled, keyframes, getCssText } = createStitches({
             yellow: '#f1fa8c',
             white: '#f8f8f2',
             whiteOpaque: '#f8f8f299',
+            whiteHover: '#f8f8f233',
             background: '$greyDark',
             textPrimary: '$white',
             textSecondary: '$whiteOpaque'
@@ -48,14 +49,15 @@ const { styled, keyframes, getCssText } = createStitches({
         fontSizes: {
             htmlFontSize: '62.5%',
             bodyFontSize: '1.6rem',
-            13: '1.3rem', //13px
-            16: '1.6rem', //16px
-            24: '2.4rem', //24px
-            32: '3.2rem', //32px
-            40: '4rem', //40px
-            48: '4.8rem', //48px,
-            56: '5.6rem', //56px
-            64: '6.4rem' //64px
+            verySmall: '1.2rem',
+            small: '1.4rem',
+            default: '$bodyFontSize',
+            heading1: '6.8rem',
+            heading2: '4.2rem',
+            heading3: '3.2rem',
+            heading4: '2.8rem',
+            heading5: '2.4rem',
+            heading6: '2rem'
         },
         fonts: {
             primary: 'Avenir, Helvetica, Arial, sans-serif'
@@ -64,6 +66,7 @@ const { styled, keyframes, getCssText } = createStitches({
             300: 300,
             400: 400,
             500: 500,
+            600: 600,
             700: 700
         },
         lineHeights: {},
