@@ -1,7 +1,10 @@
-import '../styles/globals.css'
+import { globalStyles } from 'stitches'
 
-function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+const App = ({ Component, pageProps }) => {
+    //inject global css
+    globalStyles()
+
+    return <Component {...pageProps} />
 }
 
-export default MyApp
+export default App
