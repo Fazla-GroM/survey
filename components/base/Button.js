@@ -76,4 +76,27 @@ const UnderlinedButton = styled(BaseButton, {
     }
 })
 
-export { IconButton, UnderlinedButton }
+const FilledButton = styled(BaseButton, {
+    padding: '$8 $16',
+    borderRadius: '$4',
+    boxShadow: '$elevation1',
+    transition: 'background-color 0.3s ease-in-out',
+
+    variants: {
+        color: {
+            green: {
+                backgroundColor: '$green',
+                color: '$greyDark',
+
+                '&:hover': {
+                    backgroundColor: '$greenHover'
+                }
+            }
+        }
+    },
+    defaultVariants: {
+        color: 'green'
+    }
+})
+
+export { IconButton, UnderlinedButton, FilledButton }

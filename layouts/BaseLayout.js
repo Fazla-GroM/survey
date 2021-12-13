@@ -4,7 +4,7 @@ const BaseLayout = ({ children }) => {
     return (
         <Flex direction="column" css={{ minHeight: '100vh' }}>
             <AppBar />
-            <Flex as="main" css={{ flex: 1 }}>
+            <Flex as="main" direction="column" css={{ flex: 1 }}>
                 {children}
             </Flex>
             <Footer />

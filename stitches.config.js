@@ -34,6 +34,7 @@ const { styled, keyframes, getCssText } = createStitches({
             greyLight: '#44475a',
             cyan: '#8be9fd',
             green: '#50fa7b',
+            greenHover: '#50fa7bcc',
             orange: '#ffb86c',
             pink: '#ff79c6',
             purple: '#bd93f9',
@@ -103,16 +104,10 @@ const { styled, keyframes, getCssText } = createStitches({
             4: '4px'
         },
         shadows: {
-            elevation1:
-                '0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%)',
-            elevation2:
-                '0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%)',
-            elevation3:
-                '0px 3px 3px -2px rgb(0 0 0 / 20%), 0px 3px 4px 0px rgb(0 0 0 / 14%), 0px 1px 8px 0px rgb(0 0 0 / 12%)',
-            elevation4:
-                '0px 2px 4px -1px rgb(0 0 0 / 20%), 0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%)',
-            elevation5:
-                '0px 3px 5px -1px rgb(0 0 0 / 20%), 0px 6px 10px 0px rgb(0 0 0 / 14%), 0px 1px 18px 0px rgb(0 0 0 / 12%)'
+            elevation1: '0 1.6px 3.6px 0 rgb(0 0 0 / 13%), 0 0.3px 0.9px 0 rgb(0 0 0 / 11%)',
+            elevation2: '0 3.2px 7.2px 0 rgb(0 0 0 / 13%), 0 0.6px 1.8px 0 rgb(0 0 0 / 11%)',
+            elevation3: '0 6.4px 14.4px 0 rgb(0 0 0 / 13%), 0 1.2px 3.6px 0 rgb(0 0 0 / 11%)',
+            elevation4: '0 25.6px 57.6px 0 rgb(0 0 0 / 22%), 0 4.8px 14.4px 0 rgb(0 0 0 / 18%)'
         },
         zIndices: {},
         transitions: {}
@@ -139,6 +134,9 @@ const { styled, keyframes, getCssText } = createStitches({
         }),
         linearGradient: value => ({
             backgroundImage: `linear-gradient(${value})`
+        }),
+        radialGradient: value => ({
+            backgroundImage: `radial-gradient(${value})`
         })
     }
 })

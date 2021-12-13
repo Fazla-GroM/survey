@@ -5,7 +5,16 @@ import { Navigation } from 'components/composed/Navigation'
 
 const AppBar = () => {
     return (
-        <Container as="header" maxWidth="fluid" px="3" py="1" direction="row" align="center" justify="between">
+        <Container
+            as="header"
+            maxWidth="fluid"
+            px="3"
+            py="1"
+            direction="row"
+            align="center"
+            justify="between"
+            css={{ position: 'absolute', top: '0', left: 0, zIndex: 2 }}
+        >
             <Logo />
             <Flex align="center" gap="5">
                 <Navigation />
