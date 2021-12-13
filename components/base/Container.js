@@ -48,6 +48,12 @@ const Container = styled(Flex, {
             4: {
                 py: '$64'
             }
+        },
+        gradientBackground: {
+            true: {
+                radialGradient:
+                    'circle at 15% 50%, #8be9fd33, rgba(255, 255, 255, 0) 25%), radial-gradient(circle at 85% 30%, #bd93f94d, rgba(255, 255, 255, 0) 25%'
+            }
         }
     },
     defaultVariants: {

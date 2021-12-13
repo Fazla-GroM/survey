@@ -2,6 +2,7 @@ import { styled } from 'stitches'
 
 const Text = styled('p', {
     display: 'block',
+    position: 'relative',
     margin: 0,
     fontVariantNumeric: 'tabular-nums',
 
@@ -53,12 +54,38 @@ const Text = styled('p', {
             secondary: {
                 color: '$textSecondary'
             }
+        },
+        align: {
+            center: {
+                textAlign: 'center'
+            },
+            left: {
+                textAlign: 'left'
+            },
+            right: {
+                textAlign: 'right'
+            }
+        },
+        headingDecorator: {
+            true: {
+                '&::after': {
+                    content: "''",
+                    position: 'absolute',
+                    bottom: 0,
+                    left: 0,
+                    width: '100%',
+                    height: '$4',
+                    linearGradient: '120deg, $cyan, $purple',
+                    borderRadius: '100px'
+                }
+            }
         }
     },
     defaultVariants: {
         size: 'default',
         color: 'primary',
-        weight: 'regular'
+        weight: 'regular',
+        align: 'left'
     }
 })
 
