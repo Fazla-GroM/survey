@@ -53,6 +53,9 @@ const Text = styled('p', {
             },
             secondary: {
                 color: '$textSecondary'
+            },
+            green: {
+                color: '$green'
             }
         },
         align: {

@@ -10,18 +10,26 @@ const LogoContainer = styled(Flex, {
     linearGradient: '120deg, $cyan, $purple'
 })
 
-const Logo = ({ showText = true }) => {
+const Logo = () => {
     return (
         <Link href="/">
             <Flex as="a" align="center" gap="4" css={{ color: 'inherit', textDecoration: 'none' }}>
                 <LogoContainer align="center" justify="center">
                     <CameraIcon width="24" height="24" />
                 </LogoContainer>
-                {showText && (
-                    <Text size="heading5" weight="bold">
-                        MovieFest
-                    </Text>
-                )}
+                <Text
+                    size="heading5"
+                    weight="bold"
+                    css={{
+                        display: 'none',
+
+                        '@bp1': {
+                            display: 'block'
+                        }
+                    }}
+                >
+                    MovieFest
+                </Text>
             </Flex>
         </Link>
     )
