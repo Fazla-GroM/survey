@@ -53,9 +53,7 @@ const createMirageService = ({ environment = 'test' } = {}) => {
             application: IdentityManager
         },
         serializers: {
-            application: JSONAPISerializer.extend({
-                alwaysIncludeLinkageData: true
-            })
+            application: JSONAPISerializer
         },
         models: {
             survey: Model.extend({
@@ -120,17 +118,7 @@ const createMirageService = ({ environment = 'test' } = {}) => {
                 ]
 
                 return nextWhitlist.some(whitelistedPath => whitelistedPath === request.url)
-
-                // if (request.url === '/_next/static/development/_devPagesManifest.json') {
-                //     return true
-                // }
             })
-
-            // this.create('/survey')
-
-            // this.get('/users', schema => {
-            //     return schema.users.all()
-            // })
         }
     })
 
