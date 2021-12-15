@@ -41,7 +41,5 @@
 
 ## TLDR
 
-I have lost most of time trying to find a nice mocking lib which has `JSONAPI` support out of the box, and when i did, i had to learn how to use it and how to consume json api. :D
-
--
+-   I have lost most of time trying to find a nice mocking lib which has `JSONAPI` support out of the box, and when i did, i had to learn how to use it and how to consume json api. :D
 -   I deliberately pushed `.env` file upstream
