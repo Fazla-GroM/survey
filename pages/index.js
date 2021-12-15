@@ -1,11 +1,50 @@
-import { Flex, Container, Text, Paper, TextField, Fieldset, RadioField, FilledButton } from 'components'
+import { Flex, Container, Text, Paper, Form } from 'components'
+import { generateAnswersArray, generateSuccessContent } from 'helpers'
+import { useInnerHtml, useLocalStorage } from 'hooks'
+import { useRouter } from 'next/router'
+import { useQuery, useMutation } from 'react-query'
+import { fetchData, postData } from 'services'
 
 const HomePage = () => {
+    const router = useRouter()
+
+    const [_successContent, setSuccessContent] = useLocalStorage('successContent', '')
+    //fetch survey data
+    const { data } = useQuery(['survey'], () => fetchData('survey'))
+    //safely parse html
+    const formMessageHtmlProps = useInnerHtml(data?.attributes?.description)
+
+    const { mutate } = useMutation(dataToPost => postData(`survey/${data?.id}/answers`, { body: dataToPost }), {
+        onSuccess(newData) {
+            console.log(newData)
+            setSuccessContent(generateSuccessContent(data?.attributes?.questions, newData?.attributes?.answers))
+
+            router.push('/success')
+        },
+        onError(error, newData) {
+            //do something with error
+            console.error(error)
+        }
+    })
+
+    const onSubmit = formData => {
+        const requestObject = {
+            data: {
+                type: 'surveyAnswers',
+                attributes: {
+                    answers: generateAnswersArray(formData)
+                }
+            }
+        }
+
+        mutate(requestObject)
+    }
+
     return (
         <>
             <Container
                 as="section"
-                gradientBackground
+                // gradientBackground
                 maxWidth="fluid"
                 align="center"
                 justify="center"
@@ -24,21 +63,11 @@ const HomePage = () => {
                 <Paper size="2" bgColor="glass" gap="7" align="center">
                     <Flex direction="column" gap="4" align="center">
                         <Text align="center" headingDecorator as="h2" size="heading2" weight="semiBold">
-                            Help us!
+                            {data?.attributes?.title}
                         </Text>
-                        <Text align="center">With your feedback we can create even better experience for you!</Text>
+                        <Text as="div" align="center" {...formMessageHtmlProps} />
                     </Flex>
-                    <Flex direction="column">
-                        <TextField label="Test label" />
-                    </Flex>
-                    <Fieldset legend="Legend label">
-                        <RadioField id={1} name="rating" value="1" label="1" />
-                        <RadioField id={2} name="rating" value="2" label="2" />
-                        <RadioField id={3} name="rating" value="3" label="3" />
-                        <RadioField id={4} name="rating" value="4" label="4" />
-                        <RadioField id={5} name="rating" value="5" label="5" />
-                    </Fieldset>
-                    <FilledButton type="submit">Submit</FilledButton>
+                    <Form formSchema={data?.attributes?.questions} onSubmit={onSubmit} />
                 </Paper>
             </Container>
         </>
