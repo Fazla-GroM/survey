@@ -151,7 +151,10 @@ const InputFieldset = styled('fieldset', {
     all: 'unset',
     display: 'flex',
     flexDirection: 'row',
-    gap: '$16'
+    gap: '$16',
+    alignItems: 'center',
+    justifyContent: 'center',
+    position: 'relative'
 })
 
 const InputLegend = styled('legend', {
@@ -160,4 +163,21 @@ const InputLegend = styled('legend', {
     marginBottom: '$24'
 })
 
-export { Input, InputRoot, InputLabel, InputFieldset, InputLegend, InputTick }
+const InputError = styled('span', {
+    display: 'block',
+    color: '$red',
+    fontSize: '$small',
+    position: 'absolute',
+    left: '$8',
+    bottom: '-$24',
+    variants: {
+        variant: {
+            fieldset: {
+                left: '50%',
+                transform: 'translateX(-50%)'
+            }
+        }
+    }
+})
+
+export { Input, InputRoot, InputLabel, InputFieldset, InputLegend, InputTick, InputError }
