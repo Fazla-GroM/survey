@@ -39,6 +39,7 @@ const InputTick = styled('div', {
 const InputLabel = styled('label', {
     display: 'block',
     cursor: 'pointer',
+    WebkitTapHighlightColor: 'rgba(0,0,0,0)',
 
     variants: {
         variant: {

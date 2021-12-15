@@ -11,7 +11,11 @@ const BaseButton = styled('button', {
     cursor: 'pointer',
     display: 'inline-flex',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+
+    '&:disabled': {
+        cursor: 'not-allowed'
+    }
 })
 
 const IconButton = styled(BaseButton, {
@@ -96,6 +100,9 @@ const FilledButton = styled(BaseButton, {
                 '&:hover': {
                     backgroundColor: '$greenHover'
                 }
+            },
+            orange: {
+                backgroundColor: '$orange'
             }
         }
     },
