@@ -1,34 +1,45 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# MovieFest
 
-## Getting Started
+## Required tech
 
-First, run the development server:
+-   [nvm](https://github.com/nvm-sh/nvm)
+    -   Because industry standard :)
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+## How to start project
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+-   For starters run:
+    -   `nvm install` to install working node version
+-   Install dependencies:
+    -   `npm install`
+-   Start project:
+    -   `npm run dev`
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## Technologies used
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+-   [Next](https://nextjs.org/)
+    -   react frontend framework
+-   [Stitches](https://stitches.dev/)
+    -   css-in-js lib for styling
+-   [React-Query](https://react-query.tanstack.com/)
+    -   react lib for fetching and caching data
+-   [Husky](https://opencollective.com/husky)
+    -   git hooks (currently only for commintlint)
+-   [MirageJs](https://miragejs.com/)
+    -   API mocking library
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## Important notes
 
-## Learn More
+-   Currently mock api randomizes responses for both `GET` and `POST` request with `30%` chance to get error response. You can turn it of or modify it in `createMirageService.js` on folowing lines:
+    -   [GET](https://github.com/Fazla-GroM/survey/blob/3dff1bb666398741d1c898753eb147c2c6a8c523/services/mirageService/createMirageService.js#L77)
+    -   [POST](https://github.com/Fazla-GroM/survey/blob/3dff1bb666398741d1c898753eb147c2c6a8c523/services/mirageService/createMirageService.js#L118)
 
-To learn more about Next.js, take a look at the following resources:
+## What is missing in project
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+-   No seo on frontend but that is easy to integrate with [NextSeo](https://github.com/garmeeh/next-seo)
+-   No CI/CD
+-   No SSR. App currently doesnt use SSR because mock api library doesn support it :(
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## TLDR
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+-   I have lost most of time trying to find a nice mocking lib which has `JSONAPI` support out of the box, and when i did, i had to learn how to use it and how to consume json api. :D
+-   I deliberately pushed `.env` file upstream
