@@ -1,3 +1,4 @@
+import { generateQueryString } from 'helpers'
 import getConfig from 'next/config'
 
 const { publicRuntimeConfig } = getConfig()
@@ -11,7 +12,11 @@ const defaultHeaders = {
 
 const fetchData = async (resource, params = {}) => {
     try {
-        const response = await fetch(`${baseURL}/${resource}`, {
+        const { query } = params
+
+        const queryString = generateQueryString(query)
+
+        const response = await fetch(`${baseURL}/${resource}${queryString}`, {
             headers: defaultHeaders
         })
 
@@ -30,13 +35,15 @@ const fetchData = async (resource, params = {}) => {
 
 const postData = async (resource, params = {}) => {
     try {
-        const { body, ...restParams } = params
+        const { body, query } = params
+
+        const queryString = generateQueryString(query)
 
         if (!body) {
             throw new Error('Param body is required for POST request')
         }
 
-        const response = await fetch(`${baseURL}/${resource}`, {
+        const response = await fetch(`${baseURL}/${resource}${queryString}`, {
             headers: defaultHeaders,
             method: 'POST',
             body: JSON.stringify(body)

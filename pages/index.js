@@ -14,18 +14,27 @@ const HomePage = () => {
     //safely parse html
     const formMessageHtmlProps = useInnerHtml(data?.attributes?.description)
 
-    const { mutate } = useMutation(dataToPost => postData(`survey/${data?.id}/answers`, { body: dataToPost }), {
-        onSuccess(newData) {
-            console.log(newData)
-            setSuccessContent(generateSuccessContent(data?.attributes?.questions, newData?.attributes?.answers))
+    const { mutate } = useMutation(
+        dataToPost =>
+            postData(`survey/${data?.id}/answers`, {
+                body: dataToPost,
+                query: {
+                    include: 'survey'
+                }
+            }),
+        {
+            onSuccess(newData) {
+                console.log(newData)
+                setSuccessContent(generateSuccessContent(data?.attributes?.questions, newData?.attributes?.answers))
 
-            router.push('/success')
-        },
-        onError(error, newData) {
-            //do something with error
-            console.error(error)
+                router.push('/success')
+            },
+            onError(error, newData) {
+                //do something with error
+                console.error(error)
+            }
         }
-    })
+    )
 
     const onSubmit = formData => {
         const requestObject = {
