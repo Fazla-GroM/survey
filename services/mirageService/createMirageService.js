@@ -1,16 +1,17 @@
 import { createServer, Model, JSONAPISerializer, belongsTo, hasMany, Response } from 'miragejs'
 import IdentityManager from './IdentityManager'
 import getConfig from 'next/config'
+import { randomizeTruth } from 'helpers'
 
 const { publicRuntimeConfig } = getConfig()
 
 const validatePostAnswers = answersArr => {
-    const errors = answersArr?.reduce((acc, item) => {
-        const { answer, questionId } = item
+    const errors = answersArr?.reduce((acc, item, index) => {
+        const { answer } = item
 
         if (!answer) {
             acc.push({
-                source: `data/attributes/answers/${questionId}`,
+                source: `data/attributes/answers/${index}/questionId`,
                 detail: 'The value is required'
             })
         }
@@ -73,6 +74,25 @@ const createMirageService = ({ environment = 'test' } = {}) => {
             this.namespace = publicRuntimeConfig.apiPrefix
 
             this.get('/survey', schema => {
+                const randomTruth = randomizeTruth(0.3)
+
+                if (randomTruth) {
+                    return new Response(
+                        500,
+                        {
+                            'Content-Type': 'application/vnd.api+json'
+                        },
+                        {
+                            errors: [
+                                {
+                                    title: 'Internal Server Error',
+                                    detail: "Something went wrong. We're working on it!"
+                                }
+                            ]
+                        }
+                    )
+                }
+
                 return schema.surveys.first()
             })
 
@@ -94,6 +114,25 @@ const createMirageService = ({ environment = 'test' } = {}) => {
                 const { data } = JSON.parse(request.requestBody)
 
                 const { isValid, errors } = validatePostAnswers(data?.attributes?.answers)
+
+                const randomTruth = randomizeTruth(0.3)
+
+                if (randomTruth) {
+                    return new Response(
+                        500,
+                        {
+                            'Content-Type': 'application/vnd.api+json'
+                        },
+                        {
+                            errors: [
+                                {
+                                    title: 'Internal Server Error',
+                                    detail: "Something went wrong. We're working on it!"
+                                }
+                            ]
+                        }
+                    )
+                }
 
                 if (!isValid) {
                     return new Response(

@@ -1,3 +1,9 @@
+/**
+ * a simple number checker and transformer
+ *
+ * @param {*} num
+ * @return {*}
+ */
 const toNumber = num => {
     const maybeNumber = Number(num)
 

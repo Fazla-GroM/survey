@@ -1,6 +1,13 @@
 import { useMemo } from 'react'
 import xss from 'xss'
 
+/**
+ * A hook which parses html, hopefully escapes xss bs.
+ * It returns  Object containing dangerousySetInnerHtml prop with cleaned up sting
+ *
+ * @param {string} html
+ * @return {Object}
+ */
 const useInnerHtml = html => {
     const htmlProps = useMemo(
         () => ({
