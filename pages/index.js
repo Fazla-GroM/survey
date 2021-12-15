@@ -42,16 +42,17 @@ const HomePage = () => {
 
     return (
         <>
-            <Container
-                as="section"
-                // gradientBackground
-                maxWidth="fluid"
-                align="center"
-                justify="center"
-                css={{ height: '100vh' }}
-            >
+            <Container as="section" maxWidth="fluid" align="center" justify="center" css={{ height: '100vh' }}>
                 <Paper bgColor="transparent" elevation="none" gap="4">
-                    <Text align="center" as="h1" size="heading1" weight="bold">
+                    <Text
+                        align="center"
+                        as="h1"
+                        size={{
+                            '@initial': 'heading2',
+                            '@bp1': 'heading1'
+                        }}
+                        weight="bold"
+                    >
                         MovieFest
                     </Text>
                     <Text size="heading6" color="secondary" align="center">
@@ -62,7 +63,16 @@ const HomePage = () => {
             <Container as="section" align="center">
                 <Paper size="2" bgColor="glass" gap="7" align="center">
                     <Flex direction="column" gap="4" align="center">
-                        <Text align="center" headingDecorator as="h2" size="heading2" weight="semiBold">
+                        <Text
+                            align="center"
+                            headingDecorator
+                            as="h2"
+                            size={{
+                                '@initial': 'heading3',
+                                '@bp1': 'heading2'
+                            }}
+                            weight="semiBold"
+                        >
                             {data?.attributes?.title}
                         </Text>
                         <Text as="div" align="center" {...formMessageHtmlProps} />

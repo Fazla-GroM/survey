@@ -33,6 +33,11 @@ const IconButton = styled(BaseButton, {
                     backgroundColor: '$whiteHover'
                 }
             }
+        },
+        inset: {
+            right: {
+                marginRight: '-$8'
+            }
         }
     },
     defaultVariants: {

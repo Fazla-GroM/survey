@@ -17,7 +17,16 @@ const SuccessPage = () => {
         <Container as="section" gradientBackground maxWidth="fluid" align="center" justify="center" css={{ flex: 1 }}>
             <Paper bgColor="glass" size="2" align="center" gap="7">
                 <Flex>
-                    <Text align="center" headingDecorator as="h1" size="heading1" weight="semiBold">
+                    <Text
+                        align="center"
+                        headingDecorator
+                        as="h1"
+                        size={{
+                            '@initial': 'heading3',
+                            '@bp1': 'heading2'
+                        }}
+                        weight="semiBold"
+                    >
                         Thank you!
                     </Text>
                 </Flex>
@@ -25,8 +34,22 @@ const SuccessPage = () => {
                     {Array.isArray(successContent) &&
                         successContent?.map(content => (
                             <Flex key={content?.questionId} direction="column" align="center" gap="3">
-                                <Text size="heading6">{content?.label}</Text>
-                                <Text weight="bold">{content?.answer}</Text>
+                                {content?.label && (
+                                    <Text
+                                        align="center"
+                                        size={{
+                                            '@initial': 'default',
+                                            '@bp1': 'heading6'
+                                        }}
+                                    >
+                                        {content?.label}
+                                    </Text>
+                                )}
+                                {content?.answer && (
+                                    <Text align="center" color="green" weight="bold">
+                                        {content?.answer}
+                                    </Text>
+                                )}
                             </Flex>
                         ))}
                 </Flex>

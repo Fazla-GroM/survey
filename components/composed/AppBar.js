@@ -16,9 +16,15 @@ const AppBar = () => {
             css={{ position: 'absolute', top: '0', left: 0, zIndex: 2 }}
         >
             <Logo />
-            <Flex align="center" gap="5">
+            <Flex
+                align="center"
+                gap={{
+                    '@initial': '3',
+                    '@bp1': '5'
+                }}
+            >
                 <Navigation />
-                <IconButton>
+                <IconButton inset="right">
                     <AvatarIcon width="24" height="24" />
                 </IconButton>
             </Flex>
