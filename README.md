@@ -1,4 +1,7 @@
+[TOC]
+
 # MovieFest
+
 
 ## Required tech
 
